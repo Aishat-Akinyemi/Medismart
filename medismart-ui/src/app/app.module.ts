@@ -5,17 +5,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from "./material/material.module";
-import { NavbarComponentComponent } from './components/navbar-component.component';
-import { RegistrationFormComponentComponent } from './components/registation/registration-form-component.component';
-import { RecordComponentComponent } from './components/record/record-component.component';
+import { RegistrationFormComponent } from './components/registation/registration-form.component';
+import { RecordComponent } from './components/record/record.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponentComponent,
-    RegistrationFormComponentComponent,
-    RecordComponentComponent
+    RegistrationFormComponent,
+    RecordComponent
   ],
   imports: [
     BrowserModule,
