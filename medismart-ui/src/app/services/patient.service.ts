@@ -1,9 +1,8 @@
+import { IPatient } from './../models/patient';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http";
 import { Observable, throwError } from 'rxjs';
 import { catchError } from "rxjs/operators";
-
-import { IPatient } from '../models/patient';
 
 @Injectable({
   providedIn: 'root'
@@ -31,17 +30,24 @@ export class PatientService {
 
   
   editPatient(patientId:number, patient:IPatient) : Observable<any> {
-    patient.patientId = patientId;
+    patient.patientID = patientId;
      return this.http.put(`${this.url}/${patientId}`, patient, this.httpOptions);
   }
   
-  deletePatient(patientId: string): Observable<IPatient> {
-    return this.http.delete<IPatient>(`${this.url}/${patientId}`, this.httpOptions)
+  deletePatient(patient: IPatient): Observable<IPatient> {
+    return this.http.delete<IPatient>(`${this.url}/${patient.patientID}`, this.httpOptions)
         .pipe(
-
             catchError(this.handleError)
         );
   }
+  deletePat(id: number): Observable<{}> {
+    const url = `${this.url}/${id}`; // DELETE api/heroes/42
+    return this.http.delete(url, this.httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      );
+  }
+
   
   handleError(err: HttpErrorResponse){
     let errorMsg= ' ';
