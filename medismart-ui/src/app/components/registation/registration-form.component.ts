@@ -1,3 +1,5 @@
+import { RecordComponent } from './../record/record.component';
+import { IPatient } from './../../models/patient';
 import { PatientService } from './../../services/patient.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -19,8 +21,8 @@ export class RegistrationFormComponent implements OnInit {
     this.registrationForm = this.fb.group({
       name: ['', Validators.required],
       phoneNumber: [null, Validators.pattern('[0-9]*')],
-      emailAddress: [''],
-      age: [null],
+      email: [''],
+      age: [null, Validators.pattern('[0-9]*')],
       gender: [''],
       weight: [null],
       height: [null],
@@ -30,18 +32,30 @@ export class RegistrationFormComponent implements OnInit {
   }
 
   viewRecords(){
-
+    console.log('done');
+    this.matDialog.open(RecordComponent, {
+      height: 'auto', width: 'auto'
+    });
   }
 
   formatObject(){
-    this.registrationForm.get('age').setValue(parseInt(this.registrationForm.get('age').value, 10));
-    this.registrationForm.get('gender').setValue(parseInt(this.registrationForm.get('gender').value, 10));
+    
+    let patientObj: IPatient= {name:"", phoneNumber:'', email:'', age:null, gender:null, bmi:null, address:'', underlyingCondition:''};
+    patientObj.bmi = this.registrationForm.get('weight').value/(this.registrationForm.get('weight').value^2);
+    patientObj.name = this.registrationForm.get('name').value;
+    patientObj.email = this.registrationForm.get('email').value;
+    patientObj.age = parseInt(this.registrationForm.get('age').value, 10);
+    patientObj.gender = parseInt(this.registrationForm.get('gender').value, 10);
+    patientObj.address = this.registrationForm.get('address').value;
+    patientObj.underlyingCondition = this.registrationForm.get('underlyingCondition').value;
+    return patientObj;
+
   }
 
   submitForm(){ 
-    this.formatObject();
-    this.patientService.addNewPatient(this.registrationForm.value).subscribe();
-    this.snackBar.open('Patient Record Submitted');
+    const patient= this.formatObject();
+    this.patientService.addNewPatient(patient).subscribe();
+    this.snackBar.open('Patient Record Submitted', 'close', {duration:1000});
     this.registrationForm.reset();
   }
 

@@ -31,28 +31,28 @@
             <div class="col">
                 <mat-form-field class="full-width" floatLabel="always" appearance="fill">
                     <mat-label>Email</mat-label> 
-                    <input matInput placeholder="Email" formControlName="emailAddress" required> 
+                    <input matInput placeholder="Email" formControlName="email"> 
                 </mat-form-field> 
                 
             </div>         
         </div>
         <div class="row" >
             <div class="col">
-                <mat-form-field class="" floatLabel="always" appearance="fill">
+                <mat-form-field class="full-width" floatLabel="always" appearance="fill">
                     <mat-label>Age</mat-label> 
-                    <input matInput placeholder="age" formControlName="age" required>                 
+                    <input matInput placeholder="age" formControlName="age">                 
                 </mat-form-field>                 
             </div>         
        
             <div class="col">
-                <mat-form-field class="" floatLabel="always" appearance="fill">
+                <mat-form-field class="full-width" floatLabel="always" appearance="fill">
                     <mat-label>Height</mat-label> 
                     <input matInput placeholder="height" formControlName="height" required>                 
                 </mat-form-field>                 
             </div>         
         
             <div class="col">
-                <mat-form-field class="" floatLabel="always" appearance="fill">
+                <mat-form-field class="full-width" floatLabel="always" appearance="fill">
                     <mat-label>Weight</mat-label> 
                     <input matInput placeholder="weight" formControlName="weight" required>                 
                 </mat-form-field>                 
@@ -71,7 +71,7 @@
             <div class="col">
                 <mat-form-field class="full-width" floatLabel="always" appearance="fill">
                     <mat-label>Underlying conditions</mat-label> 
-                    <input matInput placeholder="underlyingCondition" formControlName="underlyingCondition" required>                 
+                    <input matInput placeholder="underlyingCondition" formControlName="underlyingCondition">                 
                 </mat-form-field>                 
             </div>         
         </div>
@@ -97,5 +97,6 @@
     <mat-card-actions>
         <button type="submit" mat-raised-button color="primary" [disabled]="registrationForm.pristine || !registrationForm.valid" (click)="submitForm();">
             Submit</button>
+            <button mat-button (click)="viewRecords()">View Records</button>
     </mat-card-actions>
 </mat-card>
