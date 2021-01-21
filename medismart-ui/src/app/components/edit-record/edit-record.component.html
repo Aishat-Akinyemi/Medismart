@@ -1,0 +1,96 @@
+<mat-card class="mat-card">
+    <mat-card-header>
+        <mat-card-title>Edit {{patient.name|titlecase}}'s Record</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+    <hr>
+    <form [formGroup]='recordEditForm' (submit)="submitForm()">
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="full-width" floatLabel="always" appearance="fill">
+                    <mat-label>Name</mat-label> 
+                    <input matInput placeholder="Firstname    Lastname" formControlName="name" required>      
+                    <mat-error *ngIf="recordEditForm.controls['name'].hasError('required')">Name is required</mat-error>                 
+                </mat-form-field>   
+                
+            </div>         
+        </div>
+        
+
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="full-width" floatLabel="always" appearance="fill">
+                    <mat-label>Phone Number</mat-label> 
+                    <input matInput placeholder="Phone Number" formControlName="phoneNumber" required>      
+                    <mat-error *ngIf="recordEditForm.controls['phoneNumber'].hasError('pattern')">please enter only digits</mat-error>                 
+                </mat-form-field>  
+                
+            </div>         
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="full-width" floatLabel="always" appearance="fill">
+                    <mat-label>Email</mat-label> 
+                    <input matInput placeholder="Email" formControlName="email"> 
+                </mat-form-field> 
+                
+            </div>         
+        </div>
+        <div class="row" >
+            <div class="col">
+                <mat-form-field class="full-width" floatLabel="always" appearance="fill">
+                    <mat-label>Age</mat-label> 
+                    <input matInput placeholder="age" formControlName="age">                 
+                </mat-form-field>                 
+            </div>         
+       
+            <div class="col">
+                <mat-form-field class="full-width" floatLabel="always" appearance="fill">
+                    <mat-label>BMI</mat-label> 
+                    <input matInput placeholder="BMI" formControlName="bmi" required>                 
+                </mat-form-field>                 
+            </div>  
+        </div>       
+        
+           
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="full-width" floatLabel="always" appearance="fill">
+                    <mat-label>Address</mat-label> 
+                    <input matInput placeholder="address" formControlName="address" required>                 
+                </mat-form-field>                 
+            </div>         
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="full-width" floatLabel="always" appearance="fill">
+                    <mat-label>Underlying conditions</mat-label> 
+                    <input matInput placeholder="underlyingCondition" formControlName="underlyingCondition">                 
+                </mat-form-field>                 
+            </div>         
+        </div>
+
+        <div class="col">
+            <mat-form-field class="full-width" floatLabel="always" appearance="fill">
+                <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender" required>
+                <mat-option [value]="1">Female</mat-option>
+                <mat-option [value]="2">Male</mat-option>                
+                        </mat-select>
+            <mat-error *ngIf="recordEditForm.controls['gender'].hasError('required')">
+                Gender is required
+            </mat-error>
+            </mat-form-field>
+        </div> 
+
+  </form>
+        
+    </mat-card-content>
+    <mat-card-actions>
+        <button type="submit" mat-raised-button color="primary" [disabled]="recordEditForm.pristine || !recordEditForm.valid" (click)="submitForm();">
+            Save Edit</button>
+            <button mat-raised-button color="warn" (click)="goBack()">Cancel</button>
+    </mat-card-actions>
+</mat-card>
