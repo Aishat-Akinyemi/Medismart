@@ -1,12 +1,101 @@
-<mat-card>
+<mat-card class="mat-card">
     <mat-card-header>
         <mat-card-title>Patient Registration Form</mat-card-title>
     </mat-card-header>
     <mat-card-content>
     <hr>
-        <form [formGroup]></form>
+    <form [formGroup]='registrationForm' (submit)="submitForm()">
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="full-width" floatLabel="always" appearance="fill">
+                    <mat-label>Name</mat-label> 
+                    <input matInput placeholder="Firstname    Lastname" formControlName="name" required>      
+                    <mat-error *ngIf="registrationForm.controls['name'].hasError('required')">Name is required</mat-error>                 
+                </mat-form-field>   
+                
+            </div>         
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="full-width" floatLabel="always" appearance="fill">
+                    <mat-label>Phone Number</mat-label> 
+                    <input matInput placeholder="Phone Number" formControlName="phoneNumber" required>      
+                    <mat-error *ngIf="registrationForm.controls['phoneNumber'].hasError('pattern')">please enter only digits</mat-error>                 
+                </mat-form-field>  
+                
+            </div>         
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="full-width" floatLabel="always" appearance="fill">
+                    <mat-label>Email</mat-label> 
+                    <input matInput placeholder="Email" formControlName="emailAddress" required> 
+                </mat-form-field> 
+                
+            </div>         
+        </div>
+        <div class="row" >
+            <div class="col">
+                <mat-form-field class="" floatLabel="always" appearance="fill">
+                    <mat-label>Age</mat-label> 
+                    <input matInput placeholder="age" formControlName="age" required>                 
+                </mat-form-field>                 
+            </div>         
+       
+            <div class="col">
+                <mat-form-field class="" floatLabel="always" appearance="fill">
+                    <mat-label>Height</mat-label> 
+                    <input matInput placeholder="height" formControlName="height" required>                 
+                </mat-form-field>                 
+            </div>         
+        
+            <div class="col">
+                <mat-form-field class="" floatLabel="always" appearance="fill">
+                    <mat-label>Weight</mat-label> 
+                    <input matInput placeholder="weight" formControlName="weight" required>                 
+                </mat-form-field>                 
+            </div>         
+        </div>
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="full-width" floatLabel="always" appearance="fill">
+                    <mat-label>Address</mat-label> 
+                    <input matInput placeholder="address" formControlName="address" required>                 
+                </mat-form-field>                 
+            </div>         
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <mat-form-field class="full-width" floatLabel="always" appearance="fill">
+                    <mat-label>Underlying conditions</mat-label> 
+                    <input matInput placeholder="underlyingCondition" formControlName="underlyingCondition" required>                 
+                </mat-form-field>                 
+            </div>         
+        </div>
+
+        <div class="col">
+            <mat-form-field class="full-width" floatLabel="always" appearance="fill">
+                <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender" required>
+                <mat-option value="">Choose Gender</mat-option>
+                <mat-option [value]="1">Female</mat-option>
+                <mat-option [value]="2">Male</mat-option>                
+                        </mat-select>
+            <mat-error *ngIf="registrationForm.controls['gender'].hasError('required')">
+                Gender is required
+            </mat-error>
+            </mat-form-field>
+        </div> 
+
+
+  </form>
+        
     </mat-card-content>
     <mat-card-actions>
-        <button mat-button>Submit</button>
+        <button type="submit" mat-raised-button color="primary" [disabled]="registrationForm.pristine || !registrationForm.valid" (click)="submitForm();">
+            Submit</button>
     </mat-card-actions>
 </mat-card>

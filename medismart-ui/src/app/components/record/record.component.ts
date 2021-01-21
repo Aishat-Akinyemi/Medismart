@@ -1,3 +1,4 @@
+import { PatientService } from './../../services/patient.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RecordComponent implements OnInit {
 
-  constructor() { }
+  constructor(private patientService: PatientService) { }
 
   ngOnInit(): void {
   }

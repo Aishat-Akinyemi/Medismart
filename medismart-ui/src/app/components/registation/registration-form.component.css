@@ -11,18 +11,13 @@
     flex: 1;
 }
 
-.store-card {
-    height: 100%;
+.mat-card {
     margin: 2%;
-    min-width: 96%;
+    width: auto;
 }
 
 .item-divider {
     background-color: #3f51b5;
-}
-
-delBtn{
-    display: inline-block;
 }
 
 .mat-form-field, .mat-error{

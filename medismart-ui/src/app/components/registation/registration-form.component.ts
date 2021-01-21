@@ -20,7 +20,7 @@ export class RegistrationFormComponent implements OnInit {
       name: ['', Validators.required],
       phoneNumber: [null, Validators.pattern('[0-9]*')],
       emailAddress: [''],
-      age: [Date],
+      age: [null],
       gender: [''],
       weight: [null],
       height: [null],
