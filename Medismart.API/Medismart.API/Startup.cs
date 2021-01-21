@@ -18,7 +18,6 @@ namespace Medismart.API
 {
     public class Startup
     {
-        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {   
             Configuration = configuration;
@@ -32,14 +31,14 @@ namespace Medismart.API
             services.AddDbContext<DataContext>(opt =>
                 opt.UseSqlServer(Configuration.GetConnectionString("MedismartConnex"))
             .UseQueryTrackingBehavior(QueryTrackingBehavior.NoTracking));
+
             services.AddCors(options =>
             {
-                options.AddPolicy(name: MyAllowSpecificOrigins,
-                                  builder =>
-                                  {
-                                      builder.WithOrigins("http://localhost:4200"
-                                                          );
-                                  });
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.WithOrigins("http://localhost:4200" )
+                    .AllowAnyMethod()
+                    .AllowAnyHeader()
+                    .AllowCredentials());
             });
             services.AddControllers();
         }
@@ -51,7 +50,7 @@ namespace Medismart.API
             {
                 app.UseDeveloperExceptionPage();                
             }
-
+            app.UseCors("CorsPolicy");
             app.UseRouting();
             app.UseHttpsRedirection();
 
