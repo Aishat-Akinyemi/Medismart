@@ -1,3 +1,4 @@
+import { EditRecordComponent } from './components/edit-record/edit-record.component';
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -7,6 +8,7 @@ import { RegistrationFormComponent } from './components/registation/registration
 
 const routes: Routes = [
   {path:'records', component:RecordComponent},
+  {path:'patient/edit/:id', component:EditRecordComponent},
   {path:'registrationForm', component: RegistrationFormComponent},
   { path: '', redirectTo:'/registrationForm', pathMatch:'full' }
 ];
