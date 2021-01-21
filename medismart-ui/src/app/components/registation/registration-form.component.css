@@ -1,0 +1,30 @@
+.full-width {
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.col {
+    flex: 1;
+}
+
+.store-card {
+    height: 100%;
+    margin: 2%;
+    min-width: 96%;
+}
+
+.item-divider {
+    background-color: #3f51b5;
+}
+
+delBtn{
+    display: inline-block;
+}
+
+.mat-form-field, .mat-error{
+    padding: 0em, 1em; 
+}
