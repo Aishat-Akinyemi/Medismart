@@ -10,13 +10,15 @@ import { RegistrationFormComponent } from './components/registation/registration
 import { RecordComponent } from './components/record/record.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { EditRecordComponent } from './components/edit-record/edit-record.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     RegistrationFormComponent,
-    RecordComponent
+    RecordComponent,
+    EditRecordComponent
   ],
   imports: [
     BrowserModule,
@@ -26,6 +28,9 @@ import { HttpClientModule } from '@angular/common/http';
     MaterialModule,
     FormsModule,
 ReactiveFormsModule
+  ],
+  entryComponents: [
+    RecordComponent
   ],
   providers: [PatientService],
   bootstrap: [AppComponent]
